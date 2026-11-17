@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Crear programa{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Registrar programa</h1>
+
+    {% for message in messages %}
+        <p class="success">{{ message }}</p>
+    {% endfor %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        {% for field in form %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {{ field.errors }}
+        {% endfor %}
+        <button type="submit">Guardar</button>
+    </form>
+</div>
+
+<div class="card">
+    <h2>Programas registrados ({{ programas|length }})</h2>
+    <table>
+        <tr><th>ID</th><th>Código</th><th>Nombre</th><th>Facultad</th><th>Estado</th></tr>
+        {% for p in programas %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.codigo }}</td>
+            <td>{{ p.nombre }}</td>
+            <td>{{ p.facultad }}</td>
+            <td>{{ p.estado|yesno:"Activo,Inactivo" }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="5">Aún no hay programas.</td></tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

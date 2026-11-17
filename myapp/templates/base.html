@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Programas universitarios{% endblock %}</title>
+    <style>
+        body { font-family: system-ui, sans-serif; margin: 0; background: #f4f6f8; color: #222; }
+        header { background: #264b5d; color: #fff; padding: 16px 24px; }
+        header a { color: #fff; margin-right: 16px; text-decoration: none; }
+        main { max-width: 760px; margin: 24px auto; padding: 0 16px; }
+        .card { background: #fff; border-radius: 8px; padding: 24px; box-shadow: 0 1px 3px rgba(0,0,0,.1); margin-bottom: 24px; }
+        label { display: block; font-weight: 600; margin-top: 12px; }
+        input[type=text] { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+        button { margin-top: 16px; background: #264b5d; color: #fff; border: 0; padding: 10px 20px; border-radius: 4px; cursor: pointer; }
+        .errorlist { color: #b00020; margin: 4px 0; padding-left: 18px; }
+        .success { background: #e3f5e8; color: #1d6b34; padding: 12px; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { text-align: left; padding: 8px; border-bottom: 1px solid #eee; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="{% url 'crear_programa' %}">Crear programa</a>
+        <a href="/admin/">Administrador</a>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
